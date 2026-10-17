@@ -1,0 +1,161 @@
+# Hyprspace starter config.
+#
+# This file is intentionally small. Hyprspace already provides opinionated built-in
+# defaults for the dwindle-friendly layout behavior, so this file only contains the
+# first shortcuts new users are likely to want immediately.
+#
+# For a fuller reference config, see: ~/.config/hyprspace/docs/default-config.toml
+# For path rules, see: ~/.config/hyprspace/docs/README.md
+# For all available config options and commands, see:
+# https://nikitabobko.github.io/AeroSpace/guide
+# https://nikitabobko.github.io/AeroSpace/commands
+
+config-version = 2
+start-at-login = true
+
+after-startup-command = [
+    'exec-and-forget borders',
+]
+
+exec-on-workspace-change = ['/bin/bash', '-c', 'workspace="$AEROSPACE_FOCUSED_WORKSPACE"; sketchybar --trigger hyprspace_workspace_change FOCUSED_WORKSPACE="$workspace"; (sleep 0.05; focused="$(hyprspace list-workspaces --focused)"; [ -z "$focused" ] || [ "$focused" = "$workspace" ] || sketchybar --trigger hyprspace_workspace_change FOCUSED_WORKSPACE="$focused") &']
+persistent-workspaces = ['1','2','3','4','5']
+
+# Mouse follows focus is NOT set globally via on-focus-changed, because that also
+# fires on workspace switches. Instead move-mouse is attached to the directional
+# focus bindings below, so the cursor only warps when moving between windows
+# inside the current workspace.
+
+[gaps]
+inner.horizontal = 14
+inner.vertical = 14
+outer.left = 14
+outer.right = 14
+outer.bottom = 14
+outer.top = [{ monitor."built-in" = 14 }, { monitor."main" = 44 }, 44]
+
+# Applied when a workspace has exactly one tiled window: edge-to-edge fill,
+# with the top sitting flush under sketchybar (bar clearance only, no extra gap).
+# Values = [gaps] top minus the standard 20px gap, i.e. the pure sketchybar clearance.
+
+[single-window-gaps]
+inner.vertical = 14
+inner.horizontal = 14
+outer.left = 14
+outer.right = 14
+outer.bottom = 14
+outer.top = [{ monitor."built-in" = 14 }, { monitor."main" = 44 }, 44]
+# ---------- MAIN KEY BINDINGS -----------
+
+[animations]
+enabled =true
+duration-ms = 150
+style = 'fast'
+
+[mouse-drag]
+enabled = true
+modifier = 'alt'
+
+[mode.main.binding]
+
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5= 'workspace 5'
+alt-6= 'workspace 6'
+alt-7= 'workspace 7'
+alt-8= 'workspace 8'
+alt-9= 'workspace 9'
+alt-0 = 'focus-monitor 2'
+alt-shift-0 = 'move-node-to-monitor 2'
+
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5= 'move-node-to-workspace 5'
+alt-shift-6= 'move-node-to-workspace 6'
+alt-shift-7= 'move-node-to-workspace 7'
+alt-shift-8= 'move-node-to-workspace 8'
+alt-shift-9= 'move-node-to-workspace 9'
+
+alt-h = ['focus left', 'move-mouse window-lazy-center']
+alt-j = ['focus down', 'move-mouse window-lazy-center']
+alt-k = ['focus up', 'move-mouse window-lazy-center']
+alt-l = ['focus right', 'move-mouse window-lazy-center']
+
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+alt-tab = 'focus-back-and-forth'
+alt-o = 'layout floating tiling'
+alt-shift-semicolon = 'mode service'
+alt-shift-slash = 'layout tiles horizontal vertical'
+alt-shift-comma = 'layout accordion horizontal vertical'
+# Resize the focused window. On a popped-out (floating) window these resize around
+# its center, so it grows and shrinks evenly on all sides.
+#   alt -/=  (minus/equal)      width
+#   alt _/+  (shift minus/equal) height
+alt-minus = 'resize width -50'
+alt-equal = 'resize width +50'
+alt-shift-minus = 'resize height -50'
+alt-shift-equal = 'resize height +50'
+alt-f = 'fullscreen'
+alt-cmd-f = 'macos-native-fullscreen'
+
+alt-slash = 'layout tiles horizontal vertical'
+alt-comma = 'layout accordion horizontal vertical'
+
+# ---------- SERVICE MODE -----------
+
+[mode.service.binding]
+esc = ['reload-config', 'mode main']
+r = ['flatten-workspace-tree', 'mode main']
+f = ['layout floating tiling', 'mode main']
+alt-shift-semicolon = 'mode main'
+
+# ---------- WINDOW CONTROL -----------
+
+[[on-window-detected]]
+if.app-id = "com.apple.ActivityMonitor"
+run = ["layout floating"]
+
+[[on-window-detected]]
+if.app-id = "com.apple.ScreenSharing"
+run = ["layout floating"]
+
+[[on-window-detected]]
+if.app-id = "com.apple.MobileSMS"
+run = ["layout floating"]
+
+[[on-window-detected]]
+if.app-id = 'com.apple.iphonesimulator'
+run = ["layout floating"]
+
+[[on-window-detected]]
+if.app-id = "com.apple.QuickTimePlayerX"
+run = ["layout floating"]
+
+[[on-window-detected]]
+if.app-id = "com.apple.Terminal"
+run = ["layout floating"]
+
+[[on-window-detected]]
+if.app-id = "net.kovidgoyal.kitty"
+run = ["layout floating"]
+
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+if.window-title-regex-substring = 'macwifi'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+if.window-title-regex-substring = 'btop'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = "org.love2d.love"
+run = ["layout floating"]

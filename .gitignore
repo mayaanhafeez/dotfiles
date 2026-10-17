@@ -1,0 +1,36 @@
+.DS_Store
+*.log
+*.bak
+*.bak-*
+*.bak.*
+*.backup*
+.claude/settings.local.json
+
+# zsh writes these into ZDOTDIR unless told otherwise (.zshrc moves them out)
+config/zsh/.zsh_history
+config/zsh/.zsh_sessions/
+config/zsh/.zcompdump*
+
+# gh: account list only; tokens live in the macOS keychain
+config/gh/hosts.yml
+
+# herdr runtime state
+config/herdr/*.sock*
+config/herdr/session.json
+config/herdr/session-snapshots/
+config/herdr/release-notes.json
+config/herdr/.plugins.lock
+
+# hyprspace regenerates its reference docs
+config/hyprspace/docs/
+
+# Karabiner snapshots karabiner.json on every change
+config/karabiner/automatic_backups/
+
+# opencode: installed plugin deps, and service.json holds a local server password
+config/opencode/node_modules/
+config/opencode/package.json
+config/opencode/package-lock.json
+config/opencode/bun.lock
+config/opencode/.gitignore
+config/opencode/service.json

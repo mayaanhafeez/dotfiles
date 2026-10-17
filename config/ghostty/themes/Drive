@@ -1,0 +1,24 @@
+# Drive — soft sage and khaki on a deep forest ground (Omarchy Drive)
+background = #10190f
+foreground = #cdd1b4
+selection-background = #cdd1b4
+selection-foreground = #10190f
+cursor-color = #cdd1b4
+cursor-text = #10190f
+
+palette = 0=#10190f
+palette = 1=#c9a376
+palette = 2=#a5ca9c
+palette = 3=#c8cd94
+palette = 4=#8dbc94
+palette = 5=#d2a8a8
+palette = 6=#9cd0aa
+palette = 7=#cdd1b4
+palette = 8=#616560
+palette = 9=#efc58a
+palette = 10=#a3de8d
+palette = 11=#d5dd77
+palette = 12=#a8dfab
+palette = 13=#f3c3c3
+palette = 14=#92e5a3
+palette = 15=#d9e2a1

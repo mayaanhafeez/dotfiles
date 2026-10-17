@@ -1,0 +1,18 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "notion": {
+      "type": "remote",
+      "url": "https://mcp.notion.com/mcp",
+      "enabled": true
+    },
+    "pixel-art": {
+      "type": "local",
+      "command": [
+        "/Users/ayaanhafeez/.local/share/pixel-mcp/pixel-mcp"
+      ],
+      "enabled": true,
+      "timeout": 30000
+    }
+  }
+}

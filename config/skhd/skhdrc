@@ -1,0 +1,20 @@
+alt - return : pgrep -f "Ghostty.app/Contents/MacOS/ghostty" >/dev/null && osascript -e 'tell application "System Events" to tell process "Ghostty" to click menu item "New Window" of menu 1 of menu bar item "File" of menu bar 1' || open -a Ghostty
+
+alt + shift - return : open -a "Google Chrome"
+alt + shift - w : open -a "WhatsApp"
+alt + shift - s : open -a "Slack (Elev8AI)"
+alt + shift - o : open -a "Notion"
+alt + shift - e : open -a "Spark Desktop"
+alt + shift - f : open -a "Finder"
+alt + shift - b : $HOME/personal/move_to_safari/move_to_safari.sh
+
+# sketchybar panels — same paths a click takes, so the popups open focused and
+# ready for the arrow keys (see ~/.config/sketchybar, §4.6 of its SKILLS.md).
+alt + shift + ctrl - s : sketchybar --reload
+alt + ctrl - w : /opt/homebrew/bin/sketchybar --trigger wifi_popup_toggle
+alt + ctrl - v : /opt/homebrew/bin/sketchybar --trigger volume_popup_toggle
+alt + ctrl - a : /opt/homebrew/bin/sketchybar --trigger agents_popup_toggle
+alt + ctrl - t : /opt/homebrew/bin/sketchybar --trigger btop_launch
+alt + ctrl - p : /opt/homebrew/bin/sketchybar --trigger battery_popup_toggle
+alt + ctrl - b : /opt/homebrew/bin/sketchybar --trigger bluetooth_settings
+alt + ctrl - space : $HOME/personal/wallpaper-overlay/wallpaper-pick

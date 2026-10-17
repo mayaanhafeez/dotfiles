@@ -1,0 +1,23 @@
+# Batcomputer — tactical near-black console with blue telemetry and amber alerts
+background = #0b0f12
+foreground = #d7e1e5
+selection-background = #1c4652
+selection-foreground = #f4f8fa
+cursor-color = #ffb000
+cursor-text = #0b0f12
+palette = 0=#0b0f12
+palette = 1=#ff5c57
+palette = 2=#54d17a
+palette = 3=#ffb000
+palette = 4=#00b8d4
+palette = 5=#b68cff
+palette = 6=#72e4f5
+palette = 7=#d7e1e5
+palette = 8=#40535d
+palette = 9=#ff8a84
+palette = 10=#8aefab
+palette = 11=#ffdc7a
+palette = 12=#42d8f2
+palette = 13=#d2baff
+palette = 14=#a5f0fb
+palette = 15=#f4f8fa

@@ -1,0 +1,24 @@
+# Dark XP — classic Windows XP-inspired dark with deep blue accents (Omarchy Dark XP)
+background = #010A13
+foreground = #a7b0bb
+selection-background = #2E5995
+selection-foreground = #010A13
+cursor-color = #a7b0bb
+cursor-text = #010A13
+
+palette = 0=#010A13
+palette = 1=#01336A
+palette = 2=#2D4764
+palette = 3=#575D67
+palette = 4=#033C82
+palette = 5=#034286
+palette = 6=#2E5995
+palette = 7=#a7b0bb
+palette = 8=#747b82
+palette = 9=#01336A
+palette = 10=#2D4764
+palette = 11=#575D67
+palette = 12=#033C82
+palette = 13=#034286
+palette = 14=#2E5995
+palette = 15=#a7b0bb

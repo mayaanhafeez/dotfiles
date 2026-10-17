@@ -1,0 +1,2 @@
+requireMouseStop = false
+pollMillis =35

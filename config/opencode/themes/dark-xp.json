@@ -1,0 +1,234 @@
+{
+  "$schema": "https://opencode.ai/theme.json",
+  "defs": {
+    "bg": "#010A13",
+    "bg_dark": "#010A13",
+    "bg_float": "#0A141E",
+    "bg_highlight": "#12202E",
+    "bg_visual": "#2D4764",
+    "black": "#010A13",
+    "fg": "#a7b0bb",
+    "fg_dark": "#747b82",
+    "fg_gutter": "#2D4764",
+    "comment": "#575D67",
+    "sky": "#2E5995",
+    "blue": "#033C82",
+    "bright_blue": "#2E5995",
+    "deep_blue": "#01336A",
+    "magenta": "#034286",
+    "grey": "#747b82",
+    "white": "#a7b0bb",
+    "cursor": "#2E5995",
+    "diff_add": "#12202E",
+    "diff_change": "#0A141E",
+    "diff_delete": "#1A0A0A",
+    "border": "#2D4764",
+    "border_highlight": "#2E5995",
+    "error": "#01336A",
+    "warning": "#575D67",
+    "info": "#2E5995",
+    "hint": "#033C82"
+  },
+  "theme": {
+    "primary": {
+      "dark": "bright_blue",
+      "light": "bright_blue"
+    },
+    "secondary": {
+      "dark": "blue",
+      "light": "blue"
+    },
+    "accent": {
+      "dark": "sky",
+      "light": "sky"
+    },
+    "error": {
+      "dark": "error",
+      "light": "error"
+    },
+    "warning": {
+      "dark": "warning",
+      "light": "warning"
+    },
+    "success": {
+      "dark": "blue",
+      "light": "blue"
+    },
+    "info": {
+      "dark": "info",
+      "light": "info"
+    },
+    "text": {
+      "dark": "fg",
+      "light": "fg"
+    },
+    "textMuted": {
+      "dark": "fg_dark",
+      "light": "fg_dark"
+    },
+    "background": {
+      "dark": "bg",
+      "light": "bg"
+    },
+    "backgroundPanel": {
+      "dark": "bg_dark",
+      "light": "bg_dark"
+    },
+    "backgroundElement": {
+      "dark": "bg_highlight",
+      "light": "bg_highlight"
+    },
+    "border": {
+      "dark": "border",
+      "light": "border"
+    },
+    "borderActive": {
+      "dark": "border_highlight",
+      "light": "border_highlight"
+    },
+    "borderSubtle": {
+      "dark": "comment",
+      "light": "comment"
+    },
+    "diffAdded": {
+      "dark": "blue",
+      "light": "blue"
+    },
+    "diffRemoved": {
+      "dark": "error",
+      "light": "error"
+    },
+    "diffContext": {
+      "dark": "fg_dark",
+      "light": "fg_dark"
+    },
+    "diffHunkHeader": {
+      "dark": "comment",
+      "light": "comment"
+    },
+    "diffHighlightAdded": {
+      "dark": "bright_blue",
+      "light": "bright_blue"
+    },
+    "diffHighlightRemoved": {
+      "dark": "warning",
+      "light": "warning"
+    },
+    "diffAddedBg": {
+      "dark": "diff_add",
+      "light": "diff_add"
+    },
+    "diffRemovedBg": {
+      "dark": "diff_delete",
+      "light": "diff_delete"
+    },
+    "diffContextBg": {
+      "dark": "bg_highlight",
+      "light": "bg_highlight"
+    },
+    "diffLineNumber": {
+      "dark": "fg_gutter",
+      "light": "fg_gutter"
+    },
+    "diffAddedLineNumberBg": {
+      "dark": "diff_add",
+      "light": "diff_add"
+    },
+    "diffRemovedLineNumberBg": {
+      "dark": "diff_delete",
+      "light": "diff_delete"
+    },
+    "markdownText": {
+      "dark": "fg",
+      "light": "fg"
+    },
+    "markdownHeading": {
+      "dark": "sky",
+      "light": "sky"
+    },
+    "markdownLink": {
+      "dark": "bright_blue",
+      "light": "bright_blue"
+    },
+    "markdownLinkText": {
+      "dark": "bright_blue",
+      "light": "bright_blue"
+    },
+    "markdownCode": {
+      "dark": "blue",
+      "light": "blue"
+    },
+    "markdownBlockQuote": {
+      "dark": "comment",
+      "light": "comment"
+    },
+    "markdownEmph": {
+      "dark": "fg",
+      "light": "fg"
+    },
+    "markdownStrong": {
+      "dark": "white",
+      "light": "white"
+    },
+    "markdownHorizontalRule": {
+      "dark": "fg_gutter",
+      "light": "fg_gutter"
+    },
+    "markdownListItem": {
+      "dark": "bright_blue",
+      "light": "bright_blue"
+    },
+    "markdownListEnumeration": {
+      "dark": "sky",
+      "light": "sky"
+    },
+    "markdownImage": {
+      "dark": "bright_blue",
+      "light": "bright_blue"
+    },
+    "markdownImageText": {
+      "dark": "bright_blue",
+      "light": "bright_blue"
+    },
+    "markdownCodeBlock": {
+      "dark": "fg",
+      "light": "fg"
+    },
+    "syntaxComment": {
+      "dark": "comment",
+      "light": "comment"
+    },
+    "syntaxKeyword": {
+      "dark": "bright_blue",
+      "light": "bright_blue"
+    },
+    "syntaxFunction": {
+      "dark": "sky",
+      "light": "sky"
+    },
+    "syntaxVariable": {
+      "dark": "fg",
+      "light": "fg"
+    },
+    "syntaxString": {
+      "dark": "blue",
+      "light": "blue"
+    },
+    "syntaxNumber": {
+      "dark": "bright_blue",
+      "light": "bright_blue"
+    },
+    "syntaxType": {
+      "dark": "magenta",
+      "light": "magenta"
+    },
+    "syntaxOperator": {
+      "dark": "bright_blue",
+      "light": "bright_blue"
+    },
+    "syntaxPunctuation": {
+      "dark": "fg_dark",
+      "light": "fg_dark"
+    }
+  }
+}

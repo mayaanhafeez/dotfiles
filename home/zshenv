@@ -1,0 +1,5 @@
+# ~/.zshenv — the one zsh file that has to live in $HOME. It points zsh at
+# ~/.config/zsh, where .zprofile and .zshrc live. Symlinked from ~/dotfiles/home/zshenv.
+export ZDOTDIR="$HOME/.config/zsh"
+
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"

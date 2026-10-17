@@ -1,0 +1,24 @@
+# BlueRidge Dark — mountain landscape themed dark theme (Omarchy BlueRidge)
+background = #1c2128
+foreground = #e8e6e3
+selection-background = #7ec8c8
+selection-foreground = #1c2128
+cursor-color = #7ec8c8
+cursor-text = #1c2128
+
+palette = 0=#2c3640
+palette = 1=#cd9575
+palette = 2=#7ea67c
+palette = 3=#d4af37
+palette = 4=#6b8cae
+palette = 5=#9b8aa0
+palette = 6=#7ec8c8
+palette = 7=#c4b5a0
+palette = 8=#4a5568
+palette = 9=#daa89b
+palette = 10=#93c293
+palette = 11=#f4e4bc
+palette = 12=#8fb4d8
+palette = 13=#b4a3ba
+palette = 14=#9bdede
+palette = 15=#ffffff

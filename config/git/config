@@ -1,0 +1,15 @@
+[user]
+	name = Ayaan Hafeez
+	email = m.ayaan.hafeez@gmail.com
+
+[includeIf "gitdir:~/personal/"]
+	path = ~/.config/git/personal
+
+[includeIf "gitdir:~/work/"]
+	path = ~/.config/git/work
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential

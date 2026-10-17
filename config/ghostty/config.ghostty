@@ -1,0 +1,19 @@
+font-family=hack-nerd
+theme = Rose Pine
+background-opacity=0.95
+background-blur=false
+font-size = 22
+quit-after-last-window-closed = true
+macos-window-shadow = false
+macos-titlebar-style = hidden
+confirm-close-surface=false
+keybind = cmd+enter=unbind
+shell-integration-features = no-cursor,no-sudo,no-title
+
+
+#theme = rose pine moon
+#background = 000000
+#background-opacity = 0.85
+#background-blur = false
+
+

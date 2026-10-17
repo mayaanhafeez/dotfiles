@@ -1,0 +1,88 @@
+# Andromeda — btop theme
+# Based on the btop.theme shipped with the Omarchy Andromeda theme
+# (github.com/signaldirective/andromeda); the meter gradients, which were
+# left over from gruvbox upstream, are remapped onto the Andromeda palette.
+
+# Main background, empty for terminal default, need to be empty if you want transparent background
+theme[main_bg]="#23262e"
+
+# Main text color
+theme[main_fg]="#e5e5e5"
+
+# Title color for boxes
+theme[title]="#f92672"
+
+# Highlight color for keyboard shortcuts
+theme[hi_fg]="#00e8c6"
+
+# Background color of selected item in processes box
+theme[selected_bg]="#2b2f38"
+
+# Foreground color of selected item in processes box
+theme[selected_fg]="#00e8c6"
+
+# Color of inactive/disabled text
+theme[inactive_fg]="#666666"
+
+# Color of text appearing on top of graphs, i.e uptime and current network graph scaling
+theme[graph_text]="#e5e5e5"
+
+# Background color of the percentage meters
+theme[meter_bg]="#2b2f38"
+
+# Misc colors for processes box including mini cpu graphs, details memory graph and details status text
+theme[proc_misc]="#96e072"
+
+# CPU, Memory, Network, Proc box outline colors
+theme[cpu_box]="#7cb7ff" #Blue
+theme[mem_box]="#00e8c6" #Teal
+theme[net_box]="#c74ded" #Purple
+theme[proc_box]="#f92672" #Pink
+
+# Box divider line and small boxes line color
+theme[div_line]="#666666"
+
+# Temperature graph color (cool -> hot)
+theme[temp_start]="#7cb7ff"
+theme[temp_mid]="#ffe66d"
+theme[temp_end]="#f92672"
+
+# CPU graph colors
+theme[cpu_start]="#7cb7ff"
+theme[cpu_mid]="#96e072"
+theme[cpu_end]="#f92672"
+
+# Mem/Disk free meter
+theme[free_start]="#00e8c6"
+theme[free_mid]=""
+theme[free_end]="#96e072"
+
+# Mem/Disk cached meter
+theme[cached_start]="#7cb7ff"
+theme[cached_mid]=""
+theme[cached_end]="#c74ded"
+
+# Mem/Disk available meter
+theme[available_start]="#f39c12"
+theme[available_mid]=""
+theme[available_end]="#ffe66d"
+
+# Mem/Disk used meter
+theme[used_start]="#ee5d43"
+theme[used_mid]=""
+theme[used_end]="#f92672"
+
+# Download graph colors
+theme[download_start]="#c74ded"
+theme[download_mid]="#7cb7ff"
+theme[download_end]="#00e8c6"
+
+# Upload graph colors
+theme[upload_start]="#ff00aa"
+theme[upload_mid]="#f92672"
+theme[upload_end]="#ee5d43"
+
+# Process box color gradient for threads, mem and cpu usage
+theme[process_start]="#7cb7ff"
+theme[process_mid]="#96e072"
+theme[process_end]="#f92672"

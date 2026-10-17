@@ -1,0 +1,18 @@
+[submodule "config/tmux"]
+	path = config/tmux
+	url = https://github.com/mayaanhafeez/tmuxconf.git
+[submodule "config/sketchybar"]
+	path = config/sketchybar
+	url = https://github.com/mayaanhafeez/sketchy-bar-config.git
+[submodule "config/nvim"]
+	path = config/nvim
+	url = https://github.com/mayaanhafeez/nvim-config.git
+[submodule "set-theme"]
+	path = set-theme
+	url = https://github.com/mayaanhafeez/set-theme.git
+[submodule "agent-sudo-mac"]
+	path = agent-sudo-mac
+	url = https://github.com/mayaanhafeez/agent-sudo-mac.git
+[submodule "wallpapers"]
+	path = wallpapers
+	url = https://github.com/mayaanhafeez/wallpapers.git

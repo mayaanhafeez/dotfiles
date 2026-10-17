@@ -1,0 +1,13 @@
+# Hinterlands — shipped with KitsuneLauncher.
+# Source: btop themes/hinterlands.theme, mapped main_bg/main_fg/
+# hi_fg/selected_bg/inactive_fg onto the roles the panel reads.
+
+mode = "dark"
+
+background = "#222222"
+lighter_background = "#525252"
+foreground = "#ffffff"
+accent = "#b9b9b9"
+selection = "#525252"
+muted = "#525252"
+border = "#b9b9b9"  # light grey, matching set-theme's BORDERS_COLOR

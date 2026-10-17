@@ -1,0 +1,12 @@
+#!/bin/bash
+
+options=(
+  style=round
+  width=4.0
+  hidpi=on
+  active_color=0xff5fcfc9
+  inactive_color=0xff414550
+  order=above
+)
+
+borders "${options[@]}"
