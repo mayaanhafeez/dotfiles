@@ -110,6 +110,12 @@ cd ~/dotfiles && ./link.sh --dry-run   # read it
 On a truly clean machine the only backups will be macOS's default `~/.zshenv` (if any).
 Anything moved aside lands in `~/.dotfiles-backup/<timestamp>/`.
 
+If you're migrating a machine that's already running these apps, **restart each one
+after its config dir becomes a symlink**. Apps that watch their config (Kitsune, Karabiner,
+skhd, sketchybar) can keep watching the old, now-empty location and silently stop
+picking up edits. Kitsune before the `fix/watch-symlinked-config` change also never
+watches `plugins/`, `menus/` or `lua/` through a symlinked `~/.config/kitsune`.
+
 ### 4. Oh My Zsh
 
 Install it **after** `link.sh`, and tell the installer to keep the existing `.zshrc`:
