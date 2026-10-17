@@ -6,6 +6,7 @@ alt + shift - s : open -a "Slack (Elev8AI)"
 alt + shift - o : open -a "Notion"
 alt + shift - e : open -a "Spark Desktop"
 alt + shift - f : open -a "Finder"
+alt + shift - m : open -a "Spotify"
 alt + shift - b : $HOME/personal/move_to_safari/move_to_safari.sh
 
 # sketchybar panels — same paths a click takes, so the popups open focused and

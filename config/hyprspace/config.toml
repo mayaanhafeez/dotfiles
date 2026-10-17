@@ -157,5 +157,10 @@ if.window-title-regex-substring = 'btop'
 run = 'layout floating'
 
 [[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+if.window-title-regex-substring = 'htop'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-id = "org.love2d.love"
 run = ["layout floating"]
