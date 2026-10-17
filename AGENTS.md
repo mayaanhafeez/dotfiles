@@ -112,8 +112,8 @@ Anything moved aside lands in `~/.dotfiles-backup/<timestamp>/`.
 If you're migrating a machine that's already running these apps, **restart each one
 after its config dir becomes a symlink**. Apps that watch their config (Kitsune, Karabiner,
 skhd, sketchybar) can keep watching the old, now-empty location and silently stop
-picking up edits. Kitsune before the `fix/watch-symlinked-config` change also never
-watches `plugins/`, `menus/` or `lua/` through a symlinked `~/.config/kitsune`.
+picking up edits. Older Kitsune builds also never watch `plugins/`, `menus/` or `lua/`
+through a symlinked `~/.config/kitsune`; upgrade Kitsune if plugin edits need a restart.
 
 ### 4. Oh My Zsh
 
