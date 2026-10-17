@@ -255,6 +255,24 @@ off, autocorrect and smart quotes off, tap to click, Finder list view with path 
 hot corners (top-left, bottom-right → desktop), JPG screenshots. Restarts Dock, Finder and
 SystemUIServer. Ask the user to log out and back in afterwards for key repeat.
 
+**Apple Intelligence off, with RemoveMacAI [human]** (`removemacai`, from the Brewfile's
+`omlahore/tap`). This machine has every Apple Intelligence feature off and its models
+deleted, with nothing kept:
+
+```sh
+removemacai off --yes                                     # all AI features off, models deleted
+removemacai apply dock-apple-apps trash-30-days --yes    # the two tweaks macos.sh doesn't cover
+removemacai status                                        # every feature should read "off (locked)"
+```
+
+The AI restrictions and the block on re-downloading the models live in a configuration
+profile, and macOS only installs a profile after the user approves it: tell them to open
+System Settings → General → Device Management (or the notification it raises) and approve
+the RemoveMacAI profile, then re-run `removemacai status`. The other tweaks it reports as
+done (Dock delay, autocorrect, key repeat, Finder path bar, …) are the same settings
+`macos.sh` writes, so there's no need to apply them twice. Everything is undone by
+`removemacai revert`.
+
 ### 11. Permissions [human]
 
 macOS won't let an agent grant these. Open the panes and tell the user what to toggle on:
@@ -392,5 +410,6 @@ in front of it.
   installing anything.
 - `.zshrc` runs `go env GOPATH`, `zoxide init` and `fzf --zsh` at startup, so new shells
   print errors until step 2's packages are installed.
-- The tmux help popup (`prefix ?`) calls `~/omarchy/bin/omarchy-menu-tmux-keybindings`.
-  Clone https://github.com/mayaanhafeez/omarchy to `~/omarchy` if you want it.
+- The tmux help popup (`prefix ?`) runs `config/tmux/keybindings.sh`, which counts a
+  binding as yours only if it has a `bind -N "description"` in `tmux.conf`. Give new
+  bindings a description, or they're listed among tmux's defaults.
