@@ -1,0 +1,4 @@
+[tools]
+claude = { version = "latest", minimum_release_age = "0s" }
+codex = { version = "latest", minimum_release_age = "0s" }
+opencode = { version = "latest", minimum_release_age = "0s" }

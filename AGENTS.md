@@ -23,6 +23,7 @@ Work top to bottom. Each step is safe to re-run.
 | `config/hyprspace` | Hyprspace (tiling WM) `config.toml` | `~/.config/hyprspace` |
 | `config/karabiner` | Karabiner-Elements `karabiner.json` | `~/.config/karabiner` |
 | `config/kitsune` | Kitsune launcher config, plugins, colour schemes | `~/.config/kitsune` |
+| `config/mise` | mise global tools: claude, codex, opencode (all `latest`) | `~/.config/mise` |
 | `config/opencode` | opencode config, plugins, themes | `~/.config/opencode` |
 | `config/skhd` | skhd hotkeys (`skhdrc`) | `~/.config/skhd` |
 | `config/zsh` | `.zshrc` and `.zprofile` (zsh reads them via `ZDOTDIR`) | `~/.config/zsh` |
@@ -33,8 +34,10 @@ Work top to bottom. Each step is safe to re-run.
 | `agent-sudo-mac/` | **submodule** → [agent-sudo-mac](https://github.com/mayaanhafeez/agent-sudo-mac), sudo for agents (Touch ID + GUI fallback) | installs into `~/.local/bin` |
 | `wallpapers/` | **submodule** → [wallpapers](https://github.com/mayaanhafeez/wallpapers), one folder per theme (~400 MB) | `~/Pictures/wallpapers` |
 | `home/zshenv` | the only zsh file left in `$HOME`; sets `ZDOTDIR=~/.config/zsh` | `~/.zshenv` |
-| `bin/tmux-sessionizer` | fzf project picker → tmux session (bound to Ctrl-F) | `~/.local/bin/tmux-sessionizer` |
+| `bin/tmux-sessionizer` | fzf-pick a dir in `~/personal`, `~/work` or `~/university` → one tmux session per project. Ctrl-F in zsh, `prefix f` in tmux | `~/.local/bin/tmux-sessionizer` |
+| `Brewfile` | every Homebrew tap, formula, cask, plus cargo/go/npm globals | — |
 | `link.sh` | creates every symlink above; backs up anything in the way | — |
+| `macos.sh` | Dock, menu bar, keyboard, trackpad, Finder, window-tiling settings | — |
 
 Everything under `config/` is symlinked as a **whole directory**, not file by file.
 set-theme edits configs with `sed -i`, which would replace a symlinked *file* with a plain
@@ -76,29 +79,25 @@ themselves relative to their own location.
 
 ### 2. Homebrew packages
 
-Taps first, then everything these configs call:
-
 ```sh
-brew tap felixkratz/formulae          # sketchybar, borders
-brew tap asmvik/formulae              # skhd
-brew tap dimentium/autoraise          # autoraise
-brew tap malpern/tap                  # sketchybar-toggle
-brew tap mayaanhafeez/tap             # personal tools (ssht, keyboard-cleaner-cli)
-
-# shell + terminal tooling used by .zshrc, tmux, set-theme
-brew install tmux neovim fzf zoxide eza ripgrep fd lazygit gh mise go node pnpm uv jq btop fastfetch
-
-# desktop: bar, borders, hotkeys, focus
-brew install sketchybar borders skhd autoraise sketchybar-toggle lua switchaudio-osx nowplaying-cli \
-             teamookla/speedtest/speedtest
-
-# apps
-brew install --cask ghostty hyprspace karabiner-elements openlogi \
-                    font-jetbrains-mono-nerd-font font-hack-nerd-font font-sf-pro font-sf-mono sf-symbols
+brew bundle --file=~/dotfiles/Brewfile
 ```
 
-`lua` is required: `sketchybarrc` is a Lua script (`#!/usr/bin/env lua`).
-`jq`, `switchaudio-osx`, `nowplaying-cli` and `speedtest` are called by sketchybar items.
+That installs everything this machine had through Homebrew: the desktop stack
+(sketchybar, borders, skhd, autoraise, sketchybar-toggle, Hyprspace from `peachlifeab/tap`,
+Karabiner, Kitsune from its own tap, OpenLogi), shell tooling (tmux, neovim, fzf, zoxide,
+eza, mise, gh, …), fonts, apps, and global cargo/go/npm packages. A few entries need
+input or fail on a first run (macFUSE asks to approve a system extension; the `cargo`
+lines need rustup from step 5). Re-run `brew bundle` after step 5 to pick those up.
+
+Things the configs depend on, if you're trimming the Brewfile:
+`lua` (`sketchybarrc` is a Lua script), `switchaudio-osx`, `nowplaying-cli` and
+`speedtest` (sketchybar items), `fzf` (set-theme, set-wallpaper, sessionizer), and
+`eza`, `zoxide`, `go` (`.zshrc` calls them at startup). `jq` ships with macOS.
+
+To refresh it after installing something: `brew bundle dump --file=~/dotfiles/Brewfile --force`,
+then re-apply two edits by hand: the `mayaanhafeez/tap` line must not point at a local path,
+and drop the `vscode` lines (they fail on a machine without the `code` CLI).
 
 ### 3. Link the configs
 
@@ -121,14 +120,14 @@ watches `plugins/`, `menus/` or `lua/` through a symlinked `~/.config/kitsune`.
 Install it **after** `link.sh`, and tell the installer to keep the existing `.zshrc`:
 
 ```sh
-ZDOTDIR="$HOME/.config/zsh" KEEP_ZSHRC=yes RUNZSH=no CHSH=no \
+ZSH="$HOME/.local/share/oh-my-zsh" ZDOTDIR="$HOME/.config/zsh" KEEP_ZSHRC=yes RUNZSH=no CHSH=no \
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
 Without `KEEP_ZSHRC=yes` it renames our `.zshrc` to `.zshrc.pre-oh-my-zsh` and writes its
 template, through the symlink, into this repo. If that happens: `git -C ~/dotfiles checkout config/zsh`.
 
-OMZ lives at `~/.oh-my-zsh` (`$ZSH` in `.zshrc`), theme `robbyrussell`, plugins `(git)`.
+OMZ lives at `~/.local/share/oh-my-zsh` (`$ZSH` in `.zshrc`; the installer's `ZSH=` puts it there), theme `robbyrussell`, plugins `(git)`.
 There is no starship. Nothing custom lives in `$ZSH_CUSTOM`.
 
 How the zsh files fit together:
@@ -144,7 +143,7 @@ How the zsh files fit together:
 ```sh
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
 curl -fsSL https://bun.sh/install | bash          # .zshrc already has the bun PATH lines
-mise use -g claude@latest codex@latest opencode@latest
+mise install                                       # tools from config/mise/config.toml
 ```
 
 `--no-modify-path` matters: rustup would otherwise append to `~/.zshenv`, which is a
@@ -194,12 +193,8 @@ git clone https://github.com/mayaanhafeez/wallpaper-overlay.git && make -C wallp
 git clone https://github.com/mayaanhafeez/move_to_safari.git
 ```
 
-Kitsune launcher (config is `config/kitsune`):
-
-```sh
-brew tap mayaanhafeez/kitsune https://github.com/mayaanhafeez/app_launcher
-brew install --cask kitsune
-```
+Kitsune (config is `config/kitsune`) comes from the Brewfile, via its own tap
+(`mayaanhafeez/kitsune`, which is the `app_launcher` repo).
 
 herdr (terminal workspace manager; its binary goes in `~/.local/bin`):
 
@@ -212,7 +207,6 @@ herdr integration install opencode
 Optional, only if wanted on this machine:
 - **Hyprspace from source** instead of the cask: `git clone https://github.com/mayaanhafeez/hyprspace-core ~/personal/hyprspace-core`. It's an AeroSpace fork. Ask before deleting its build tree on any machine.
 - **macwifi** (Wi-Fi TUI, used by sketchybar's wifi item): https://github.com/mayaanhafeez/macwifi
-- **ssht**: `brew install mayaanhafeez/tap/ssht`
 
 ### 9. Start services
 
@@ -226,7 +220,19 @@ open -a Karabiner-Elements
 open -a KitsuneLauncher
 ```
 
-### 10. Permissions [human]
+### 10. macOS settings
+
+```sh
+~/dotfiles/macos.sh
+```
+
+Dock (auto-hide on the left, no delay), hidden menu bar for SketchyBar, macOS window
+tiling and Stage Manager off (they fight Hyprspace), fast key repeat with press-and-hold
+off, autocorrect and smart quotes off, tap to click, Finder list view with path bar,
+hot corners (top-left, bottom-right → desktop), JPG screenshots. Restarts Dock, Finder and
+SystemUIServer. Ask the user to log out and back in afterwards for key repeat.
+
+### 11. Permissions [human]
 
 macOS won't let an agent grant these. Open the panes and tell the user what to toggle on:
 
@@ -241,7 +247,7 @@ open "x-apple.systempreferences:com.apple.preference.security?Privacy_ListenEven
 
 After granting, restart the affected service (`skhd --restart-service`, `brew services restart autoraise`).
 
-### 11. Accounts and SSH [human]
+### 12. Accounts and SSH [human]
 
 ```sh
 gh auth login            # GitHub CLI; stores the token in the keychain
@@ -269,7 +275,7 @@ and add them to GitHub, or copy them over from the old machine by hand.
 git identity switches by directory (`config/git/config`): repos under `~/personal/` use
 the personal email, `~/work/` uses the work email, everything else uses the personal one.
 
-### 12. Apply a theme
+### 13. Apply a theme
 
 Last, because it writes into almost everything above:
 
@@ -279,10 +285,10 @@ set-theme rose-pine       # or any other; names are fuzzy-matched
 ```
 
 See the next section for what it touches. On a fresh machine some targets print
-`skipped`: kitty (not installed), macwifi, and OpenLogi until each app has created its config.
+`skipped`: kitty (unless installed), macwifi, and OpenLogi until each app has created its config.
 That's expected.
 
-### 13. Verify
+### 14. Verify
 
 ```sh
 zsh -lic 'echo $ZDOTDIR $HISTFILE; alias ls'   # ~/.config/zsh, ~/.local/state/zsh/history, eza
@@ -313,7 +319,7 @@ Then ask the user to press a few hotkeys: `alt+return` (Ghostty), `alt+ctrl+spac
 | SketchyBar | `theme = "..."` in `config/sketchybar/settings.lua`; `sketchybar --reload` |
 | borders | `active_color` in `config/borders/bordersrc`; pushes it to the running instance |
 | opencode | sets `theme: system` in `tui.json`; the desktop app's theme is queued via `opencode-desktop-theme` |
-| kitty | `~/.config/kitty/current-theme.conf` (kitty is not currently installed) |
+| kitty | `~/.config/kitty/current-theme.conf`. Skipped entirely when the kitty CLI isn't installed (it isn't here) |
 | Chrome | queues a custom-colour theme, applied when Chrome next quits (`chrome-theme`) |
 | OpenLogi | `theme_dark`/`theme_light` in `~/.config/openlogi/config.toml` |
 | macwifi | `theme` in `~/Library/Application Support/macwifi/config.toml` |

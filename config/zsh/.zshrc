@@ -2,7 +2,7 @@
  export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Path to your Oh My Zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="$HOME/.local/share/oh-my-zsh"
 
 # ZDOTDIR (~/.config/zsh) is a symlink into ~/dotfiles, so keep zsh's
 # generated files out of it: history in ~/.local/state, compdump in ~/.cache.
@@ -121,8 +121,6 @@ alias brew-update="brew update && brew upgrade && brew cleanup"
 export EDITOR="nvim"
 
 alias edit_zsh='vi $ZDOTDIR/.zshrc'
-alias edit_bash='vi ~/.bash_profile'
-alias edit_vim='vi ~/.vimrc'
 alias reload='source $ZDOTDIR/.zshrc'
 
 # ---------- Homebrew ----------
