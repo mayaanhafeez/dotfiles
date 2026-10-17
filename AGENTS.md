@@ -16,6 +16,7 @@ Work top to bottom. Each step is safe to re-run.
 | `config/AutoRaise` | AutoRaise (focus-follows-mouse) | `~/.config/AutoRaise` |
 | `config/borders` | JankyBorders `bordersrc` | `~/.config/borders` |
 | `config/btop` | btop config + custom themes | `~/.config/btop` |
+| `config/doom` | Doom Emacs user config (`init.el`, `config.el`, `packages.el`). Doom itself is cloned separately | `~/.config/doom` |
 | `config/gh` | GitHub CLI config (`hosts.yml` is **not** tracked) | `~/.config/gh` |
 | `config/ghostty` | Ghostty terminal config + custom themes | `~/.config/ghostty` |
 | `config/git` | git config (`config`, `personal`, `work`, `ignore`) | `~/.config/git` |
@@ -203,6 +204,28 @@ curl -fsSL https://herdr.dev/install.sh | sh
 herdr integration install claude
 herdr integration install opencode
 ```
+
+Doom Emacs (Emacs.app comes from the Brewfile's `emacs-app` cask; the config is `config/doom`):
+
+```sh
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+MACOSX_DEPLOYMENT_TARGET=26.0 ~/.config/emacs/bin/doom install --no-config --no-env --force
+```
+
+`--no-config` keeps `config/doom`, and `--force` answers Doom's prompts. Then ask the
+user to run `doom env` once **from their own terminal**: it snapshots the environment it
+runs in (PATH etc.) for the GUI app, and an agent's shell would leak its own variables into it.
+
+Doom itself is not in this repo (172 MB, and `doom upgrade` manages it). Two
+workarounds keep it running on Emacs 31 + macOS 26 or later, and both need to stay:
+- Emacs 31's native compiler asks clang for `-mmacosx-version-min=18.0` (derived from the
+  Darwin kernel version; macOS versions 16 to 25 don't exist), so every native compile fails
+  and Doom crashes at startup. The top of `config/doom/init.el` pins
+  `native-comp-driver-options` to `26.0` for the app.
+- The `doom` CLI compiles before it reads `init.el`, so `.zshrc` defines `doom()` to run
+  `~/.config/emacs/bin/doom` with `MACOSX_DEPLOYMENT_TARGET=26.0`. In a shell that hasn't
+  loaded `.zshrc` (like an agent's), set that variable yourself, as in the install line above.
+After Emacs.app upgrades to a new major or minor version, run `doom sync` so packages are rebuilt for it.
 
 Optional, only if wanted on this machine:
 - **Hyprspace from source** instead of the cask: `git clone https://github.com/mayaanhafeez/hyprspace-core ~/personal/hyprspace-core`. It's an AeroSpace fork. Ask before deleting its build tree on any machine.
