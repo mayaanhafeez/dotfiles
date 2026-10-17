@@ -171,3 +171,8 @@ bindkey -s ^f "tmux-sessionizer\n"
 # mise shims: exported in .zprofile so non-interactive login shells get it.
 # This guard covers a bare non-login `zsh`, which skips .zprofile.
 [[ ":$PATH:" == *":$HOME/.local/share/mise/shims:"* ]] || export PATH="$HOME/.local/share/mise/shims:$PATH"
+
+# ---------- Doom Emacs ----------
+# Emacs 31 native-comp asks clang for macOS "18.0" on macOS 26+, which crashes
+# the doom CLI before it reads ~/.config/doom/init.el (that file covers the GUI).
+doom() { MACOSX_DEPLOYMENT_TARGET=26.0 "$HOME/.config/emacs/bin/doom" "$@"; }

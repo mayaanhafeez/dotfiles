@@ -164,6 +164,8 @@ cask "font-hack-nerd-font"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-sf-mono"
 cask "font-sf-pro"
+# Icon font for Doom Emacs (nerd-icons)
+cask "font-symbols-only-nerd-font"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
 # Web browser
