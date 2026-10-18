@@ -1,7 +1,7 @@
 font-family=hack-nerd
 theme = Rose Pine
-background-opacity=0.95
-background-blur=false
+background-opacity=0.85
+background-blur=true
 font-size = 22
 quit-after-last-window-closed = true
 macos-window-shadow = false

@@ -26,24 +26,24 @@ persistent-workspaces = ['1','2','3','4','5']
 # inside the current workspace.
 
 [gaps]
-inner.horizontal = 14
-inner.vertical = 14
-outer.left = 14
-outer.right = 14
-outer.bottom = 14
-outer.top = [{ monitor."built-in" = 14 }, { monitor."main" = 44 }, 44]
+inner.horizontal = 17
+inner.vertical = 17
+outer.left = 17
+outer.right = 17
+outer.bottom = 17
+outer.top = [{ monitor."built-in" = 17 }, { monitor."main" = 47 }, 47]
 
 # Applied when a workspace has exactly one tiled window: edge-to-edge fill,
 # with the top sitting flush under sketchybar (bar clearance only, no extra gap).
 # Values = [gaps] top minus the standard 20px gap, i.e. the pure sketchybar clearance.
 
-[single-window-gaps]
-inner.vertical = 14
-inner.horizontal = 14
-outer.left = 14
-outer.right = 14
-outer.bottom = 14
-outer.top = [{ monitor."built-in" = 14 }, { monitor."main" = 44 }, 44]
+# [single-window-gaps]
+# inner.vertical = 14
+# inner.horizontal = 14
+# outer.left = 14
+# outer.right = 14
+# outer.bottom = 14
+# outer.top = [{ monitor."built-in" = 14 }, { monitor."main" = 44 }, 44]
 # ---------- MAIN KEY BINDINGS -----------
 
 [animations]
